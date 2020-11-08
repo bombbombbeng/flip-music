@@ -1,23 +1,43 @@
-// import React from "react";
-// import ReactDOM from 'react-dom';
-// import App from './components/app'
+import React from "react";
+import ReactDOM from 'react-dom';
+import App from './components/app'
 
-// ReactDOM.render(
-//     <App name="zoe" />,
-//     document.getElementById('app')
-// )
+ReactDOM.render(
+    <App name="zoe" />,
+    document.getElementById('app')
+)
 
-interface searchFunc {
-    (source: string, subString: string): boolean;
+interface ClockConstructor {
+    new (hour: number, minute: number): ClockInterface;
 }
 
-let mySearch: searchFunc
-
-mySearch = function(src, subSrc) {
-    return true
+interface ClockInterface {
+    setTime(d: Date): void;
 }
 
-mySearch('23', '23')
+class DigitalClock implements ClockInterface {
+    constructor(h: number, m: number) {
+
+    }
+    setTime(d: Date): void {
+        console.log(d)
+    }
+}
+
+const Clock: ClockConstructor = class Clock implements ClockInterface {
+    constructor(m: number, h: number) {}
+    setTime(d: Date) {}
+}
+
+function createClock(
+    ctor: ClockConstructor,
+    h: number,
+    m: number
+): ClockInterface {
+    return new ctor(h, m)
+}
+
+let digital = createClock(DigitalClock, 34, 43)
 
 
 

@@ -3,7 +3,7 @@ interface AppProps {
     name: string;
 }
 
-class App extends React.Component {
+class App extends React.Component<AppProps> {
     constructor(props: AppProps) {
         super(props);
     }
