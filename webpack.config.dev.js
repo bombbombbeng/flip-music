@@ -1,4 +1,5 @@
 const baseConfig = require('./webpack.config.base')
+const { HotModuleReplacementPlugin } = require('webpack')
 
 const devConfig = {
 	mode: 'development',
@@ -6,9 +7,12 @@ const devConfig = {
 	devServer: {
 		contentBase: './dist',
 		hot: true,
+		hotOnly: true,
 		open: true
 	}
 }
+
+baseConfig.plugins.push(new HotModuleReplacementPlugin())
 
 function mergeConfig() {
 	const config = {}
