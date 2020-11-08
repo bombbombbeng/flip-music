@@ -6,7 +6,8 @@
   "types": "src/types/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js",
+    "start:dev": "webpack serve --config webpack.config.dev.js"
   },
   "repository": {
     "type": "git",
@@ -23,12 +24,17 @@
   "homepage": "https://github.com/bombbombbeng/flip-music#readme",
   "devDependencies": {
     "@types/react": "^16.9.56",
+    "@types/react-dom": "^16.9.9",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.0.1",
     "html-webpack-plugin": "^4.5.0",
     "jest": "^26.6.1",
+    "style-loader": "^2.0.0",
     "ts-loader": "^8.0.7",
     "typescript": "^4.0.5",
     "webpack": "^5.3.2",
-    "webpack-cli": "^4.1.0"
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
     "axios": "^0.21.0",
