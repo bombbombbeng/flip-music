@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/bombbombbeng/flip-music#readme",
   "devDependencies": {
+    "@types/randombytes": "^2.0.0",
     "@types/react": "^16.9.56",
     "@types/react-dom": "^16.9.9",
     "clean-webpack-plugin": "^3.0.0",
@@ -38,6 +39,9 @@
   },
   "dependencies": {
     "axios": "^0.21.0",
+    "buffer": "^6.0.2",
+    "crypto-js": "^4.0.0",
+    "randombytes": "^2.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0"

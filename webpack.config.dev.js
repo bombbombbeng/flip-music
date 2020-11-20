@@ -8,7 +8,23 @@ const devConfig = {
 		contentBase: './dist',
 		hot: true,
 		hotOnly: true,
-		open: true
+		open: true,
+		// proxy: {
+		// 	'https://music.163.com/weapi/': {
+		// 		target: 'https://music.163.com/weapi/',
+		// 		pathRewrite: {'^/wy': ''},
+		// 		secure: false
+		// 	}
+		// },
+		proxy: [
+			{
+				context: ['/wy'],
+				target: 'https://music.163.com/weapi/',
+				pathRewrite: {'^/wy': ''},
+				secure: false,
+				changeOrigin: true
+			}
+		]
 	}
 }
 

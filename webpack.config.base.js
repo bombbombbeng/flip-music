@@ -2,7 +2,6 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
-
 module.exports = {
 	entry: './src/index.tsx',
 	module: {
@@ -19,7 +18,10 @@ module.exports = {
 		]
 	},
 	resolve: {
-		extensions: ['.tsx', '.ts', '.js']
+		extensions: ['.tsx', '.ts', '.js'],
+		// fallback: {
+		// 	"buffer": require.resolve("buffer/")
+		// }
 	},
 	output: {
 		filename: 'bundle.js',
