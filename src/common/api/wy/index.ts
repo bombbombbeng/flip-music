@@ -1,27 +1,23 @@
-import axios from 'axios';
-import { urlencoded, weapi } from './utils'
+import { wyapi } from './crypto'
+import { searchType } from './enum'
+import createAxios from '../request'
+import { searchFunc } from '../types'
+import { urlencoded } from '../utils'
 
-const wy = axios.create({
+const wy = createAxios({
     baseURL: 'wy/',
-    timeout: 10000,
-    headers: {
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36',
-        'origin': 'https://music.163.com',
-        // 'content-type': 'application/x-www-form-urlencoded'
-    }
+    headers: { 'origin': 'https://music.163.com' }
 })
 
-
-
-export const WY_SEARCH = async (str: string, page: number) => {
+export const WY_SEARCH: searchFunc = async (str: string, page: number) => {
     const limit = 30
     const params = {
         s: str,
-        type: 1, // 1: 单曲, 10: 专辑, 100: 歌手, 1000: 歌单, 1002: 用户, 1004: MV, 1006: 歌词, 1009: 电台, 1014: 视频
+        type: searchType.SONG,
         limit,
         offset: limit * (page - 1),
     }
-    const p = await weapi(params)
+    const p = await wyapi(params)
     console.log('WY_SEARCH', params, p, urlencoded(p))
     // const p = {
     //     params: 'zZ2ngHNrGADyNAP9X2aToZ2opFfr6c5Lc5u/G+/LERMkIKLTA1i20WKQVhSFdZW6NCpf+j9yucBmNdHteJYdcE8GrixzuJNtx1+ZbP800DQjWI8VVn1VjkhsDFRJiU/y4d+3vRYqHmiq60aLN1VMFTEpeM5xoNPgX6KKOUxH35vZepySoJGnulhcr6JaYZdvMO87UnUmgMdhKnwDI8T2qQ==',

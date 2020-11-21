@@ -1,5 +1,5 @@
 import React from "react";
-import { WY_SEARCH } from '../common/api/wy'
+import api from '../common/api'
 
 interface AppProps {
     name: string;
@@ -18,7 +18,7 @@ class App extends React.Component<AppProps, AppState> {
 
     async getList() {
         try {
-            const res = await WY_SEARCH('哈哈', 1)
+            const res = await api.kw.search('coldplay', 1)
             console.log(res)
         } catch (e) {
             console.log(e)

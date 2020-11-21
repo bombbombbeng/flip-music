@@ -9,21 +9,33 @@ const devConfig = {
 		hot: true,
 		hotOnly: true,
 		open: true,
-		// proxy: {
-		// 	'https://music.163.com/weapi/': {
-		// 		target: 'https://music.163.com/weapi/',
-		// 		pathRewrite: {'^/wy': ''},
-		// 		secure: false
-		// 	}
-		// },
 		proxy: [
 			{
 				context: ['/wy'],
 				target: 'https://music.163.com/weapi/',
 				pathRewrite: {'^/wy': ''},
-				secure: false,
 				changeOrigin: true
-			}
+			},
+      {
+        context: ['/tx'],
+        target: 'https://c.y.qq.com/',
+        pathRewrite: {'^/tx': ''},
+        changeOrigin: true
+      },
+      {
+        context: ['/kg'],
+        target: 'http://ioscdn.kugou.com/',
+        pathRewrite: {'^/kg': ''},
+        secure: false,
+        changeOrigin: true
+      },
+      {
+        context: ['/kw'],
+        target: 'http://search.kuwo.cn/',
+        pathRewrite: {'^/kw': ''},
+        secure: false,
+        changeOrigin: true
+      }
 		]
 	}
 }

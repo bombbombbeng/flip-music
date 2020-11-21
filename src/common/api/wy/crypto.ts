@@ -70,7 +70,7 @@ function buf2hex(buffer: any) {
     return Array.prototype.map.call(new Uint8Array(buffer), (x: any) => ('00' + x.toString(16)).slice(-2)).join('')
 }
 
-export const weapi = async(object: any) => {
+export const wyapi = async(object: any) => {
     const text = JSON.stringify(object)
     const secretKey = randomBytes(16).map((n: any) => (base62.charAt(n % 62).charCodeAt(0)))
     const publicCryptoKey = await importPublicKey(publicKey)
@@ -87,13 +87,3 @@ export const weapi = async(object: any) => {
     return rs
 }
 
-
-export function urlencoded(form: {[index: string]: any}): string {
-    // 请求数据格式转换：对象转换成键值对格式, 对应请求头'content-type': 'application/x-www-form-urlencoded'
-    const arr = Object.keys(form).reduce((acc: string[], cur: string) => {
-        const str = encodeURI(form[cur])
-        acc.push(`${cur}=${str}`)
-        return acc
-    }, [])
-    return arr.join('&')
-}
