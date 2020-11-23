@@ -6,6 +6,12 @@ interface axiosConfig {
     headers?: object;
 }
 
+function handleError(response: object) {
+  return {
+    code: 500
+  }
+}
+
 function createAxios(config: axiosConfig): AxiosInstance {
   const defalutConfig = {
     baseURL: '',
@@ -15,7 +21,15 @@ function createAxios(config: axiosConfig): AxiosInstance {
     }
   }
   Object.assign(defalutConfig, config)
-  return axios.create(defalutConfig)
+  const instance = axios.create(defalutConfig)
+  instance.interceptors.response.use((response) => {
+    if (response.status !== 200) {
+      const error = handleError(response)
+      return Promise.reject(error)
+    }
+    return response.data
+  }, (error) => Promise.reject(error))
+  return instance
 }
 
 export { createAxios }
