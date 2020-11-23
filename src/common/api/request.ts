@@ -1,4 +1,4 @@
-import axios, {AxiosInstance} from 'axios'
+import axios, { AxiosInstance } from 'axios'
 
 interface axiosConfig {
     baseURL: string;
@@ -7,15 +7,15 @@ interface axiosConfig {
 }
 
 function createAxios(config: axiosConfig): AxiosInstance {
-    const defalutConfig = {
-        baseURL: '',
-        timeout: 10000,
-        headers: {
-            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36'
-        }
+  const defalutConfig = {
+    baseURL: '',
+    timeout: 10000,
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36'
     }
-    Object.assign(defalutConfig, config)
-    return axios.create(defalutConfig)
+  }
+  Object.assign(defalutConfig, config)
+  return axios.create(defalutConfig)
 }
 
 export { createAxios }
