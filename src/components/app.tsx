@@ -1,12 +1,13 @@
 // eslint-disable-next-line no-use-before-define
 import React from 'react'
+import Button from '@material-ui/core/Button'
 import api from '../common/api'
 
 interface AppProps {
     name: string;
 }
 interface AppState {
-    list: object;
+    list: SongInfo[];
 }
 
 class App extends React.Component<AppProps, AppState> {
@@ -23,10 +24,19 @@ class App extends React.Component<AppProps, AppState> {
 
   async getList() {
     try {
-      const res = await api.kw.search('coldplay', 1)
+      const res: SongList = await api.kw.search('coldplay', 1)
       console.log('getList', res)
+      // const { total, data } = res
+      const data = [
+        {
+          name: '哈哈哈',
+          singer: 'singer',
+          album: '宇宙神专',
+          duration: '3分20秒'
+        }
+      ]
       this.setState({
-        list: res
+        list: data
       })
       console.log(res)
     } catch (e) {
@@ -37,18 +47,25 @@ class App extends React.Component<AppProps, AppState> {
   render() {
     const { name } = this.props
     const { list } = this.state
+    const listItem = list.map((item) => (
+      <div>
+        <span>{item.name}</span>
+        <span>{item.singer}</span>
+        <span>{item.album}</span>
+        <span>{item.duration}</span>
+        <Button variant="contained" color="primary">播放</Button>
+      </div>
+    ))
     return (
       <div>
         <span>
           hello
           {name}
         </span>
-        <span>{ list }</span>
+        <div>{listItem}</div>
       </div>
     )
   }
 }
-
-// helloWorld.rex = /reg/
 
 export default App

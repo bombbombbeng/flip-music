@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from 'axios'
+import axios from 'axios'
 
 interface axiosConfig {
     baseURL: string;
@@ -12,7 +12,7 @@ function handleError(response: object) {
   }
 }
 
-function createAxios(config: axiosConfig): AxiosInstance {
+function createAxios(config: axiosConfig) {
   const defalutConfig = {
     baseURL: '',
     timeout: 10000,

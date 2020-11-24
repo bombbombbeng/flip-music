@@ -1,8 +1,11 @@
-declare namespace Zoe {
-    interface Person {
-        name: string;
-        age: number;
-    }
+interface SongInfo {
+    name: string;
+    singer: string;
+    album: string;
+    duration: string;
 }
 
-declare function sayHi(name: string): string;
+interface SongList {
+   total: number;
+   data: SongInfo[]
+}

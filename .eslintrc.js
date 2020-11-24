@@ -29,6 +29,7 @@ module.exports = {
     'no-var': ['error'],
     'comma-dangle': 'off',
     'no-shadow': 'off',
+    'no-undef': 'off',
     semi: ['error', 'never'],
   },
 }

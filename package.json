@@ -48,6 +48,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "axios": "^0.21.0",
     "buffer": "^6.0.2",
     "crypto-js": "^4.0.0",
