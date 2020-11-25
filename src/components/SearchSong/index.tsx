@@ -1,17 +1,14 @@
-// eslint-disable-next-line no-use-before-define
 import React from 'react'
-import Button from '@material-ui/core/Button'
-import api from '../common/api'
+import api from '../../common/api'
+import SongListItem from './SongListItem'
+import 'src/styles/app.css'
 
-interface AppProps {
-    name: string;
-}
 interface AppState {
     list: SongInfo[];
 }
 
-class App extends React.Component<AppProps, AppState> {
-  constructor(props: AppProps) {
+class Index extends React.Component<{}, AppState> {
+  constructor(props: {}) {
     super(props)
     this.state = {
       list: []
@@ -29,10 +26,25 @@ class App extends React.Component<AppProps, AppState> {
       // const { total, data } = res
       const data = [
         {
-          name: '哈哈哈',
+          song: '哈哈哈',
           singer: 'singer',
           album: '宇宙神专',
-          duration: '3分20秒'
+          duration: '3分20秒',
+          id: '001'
+        },
+        {
+          song: '呵呵呵',
+          singer: 'singer',
+          album: '宇宙神专',
+          duration: '3分20秒',
+          id: '002'
+        },
+        {
+          song: '嘻嘻嘻',
+          singer: '凌凌漆',
+          album: '地球神专',
+          duration: '2分33秒',
+          id: '003'
         }
       ]
       this.setState({
@@ -45,27 +57,16 @@ class App extends React.Component<AppProps, AppState> {
   }
 
   render() {
-    const { name } = this.props
     const { list } = this.state
     const listItem = list.map((item) => (
-      <div>
-        <span>{item.name}</span>
-        <span>{item.singer}</span>
-        <span>{item.album}</span>
-        <span>{item.duration}</span>
-        <Button variant="contained" color="primary">播放</Button>
-      </div>
+      <SongListItem key={item.id} info={item} />
     ))
     return (
       <div>
-        <span>
-          hello
-          {name}
-        </span>
-        <div>{listItem}</div>
+        {listItem}
       </div>
     )
   }
 }
 
-export default App
+export default Index

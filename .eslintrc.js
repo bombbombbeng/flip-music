@@ -31,5 +31,7 @@ module.exports = {
     'no-shadow': 'off',
     'no-undef': 'off',
     semi: ['error', 'never'],
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': ['error']
   },
 }
