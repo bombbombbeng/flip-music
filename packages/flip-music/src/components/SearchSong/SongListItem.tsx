@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '@material-ui/core/Button'
 
 const SongListItem = (props: {info: SongInfo}) => {
   const { info } = props
@@ -8,6 +9,7 @@ const SongListItem = (props: {info: SongInfo}) => {
       <span>{info.singer}</span>
       <span>{info.album}</span>
       <span>{info.duration}</span>
+      <Button>play</Button>
     </div>
   )
 }

@@ -8,8 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.prod.js",
     "start:dev": "webpack serve --config webpack.config.dev.js",
-    "eslint": "eslint --ext .js,.ts,.tsx src",
-    "eslint:fix": "eslint --fix --ext .js,.ts,.tsx src"
+    "eslint": "eslint --ext .js,.ts,.tsx ",
+    "eslint:fix": "eslint --fix --ext .js,.ts,.tsx "
   },
   "repository": {
     "type": "git",
@@ -56,5 +56,8 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }
