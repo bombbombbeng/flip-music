@@ -12,14 +12,14 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /.m?js$/,
+        test: /\.js[x]$/,
         use: {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env']
           }
         },
-        exclude: /(node_modules|bower_components)/
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
@@ -28,7 +28,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.jsx', '.js'],
     alias: {
       src: path.resolve(__dirname, './src')
     }

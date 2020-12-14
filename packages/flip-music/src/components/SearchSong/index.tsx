@@ -7,7 +7,7 @@ interface AppState {
     list: SongInfo[];
 }
 
-class Index extends React.Component<{}, AppState> {
+class SearchSong extends React.Component<{}, AppState> {
   constructor(props: {}) {
     super(props)
     this.state = {
@@ -69,4 +69,4 @@ class Index extends React.Component<{}, AppState> {
   }
 }
 
-export default Index
+export default SearchSong
