@@ -1,16 +1,18 @@
 import React from 'react'
-// import Button from '@material-ui/core/Button'
-import Button from 'flip-ui/src/Button'
+import Button from '@material-ui/core/Button'
+import FlipButton from 'flip-ui/src/Button'
 
 const SongListItem = (props: {info: SongInfo}) => {
   const { info } = props
+  const onClick = (name?: string) => console.log('onClick', name)
   return (
     <div>
       <span>{info.song}</span>
       <span>{info.singer}</span>
       <span>{info.album}</span>
       <span>{info.duration}</span>
-      <Button name={info.song}>{info.song}</Button>
+      <Button name={info.song} onClick={() => { alert('clicked') }}>play</Button>
+      <FlipButton name={info.song} onClick={() => { alert('clicked') }}>play</FlipButton>
     </div>
   )
 }

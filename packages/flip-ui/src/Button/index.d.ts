@@ -1,11 +1,11 @@
-interface Props {
-  name:string;
-}
-interface State {
-  test: string;
+import React from 'react'
+
+export interface ButtonProps {
+  name: string;
+  children?: React.ReactNode;
+  onClick?: React.MouseEventHandler<HTMLElement>;
 }
 
-export declare class Button extends React.Component<Props, State> {
-  constructor(props: Props);
-}
+export declare function Button(props: ButtonProps);
+
 export default Button
