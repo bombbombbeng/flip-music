@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
 import FlipButton from 'flip-ui/src/Button'
+import SoftBox from 'flip-ui/src/SoftBox'
 
 const SongListItem = (props: {info: SongInfo}) => {
   const { info } = props
@@ -13,7 +14,7 @@ const SongListItem = (props: {info: SongInfo}) => {
       <span>{info.duration}</span>
       <Button name={info.song} onClick={() => { alert('clicked') }}>play</Button>
       <FlipButton name={info.song} onClick={() => { alert('clicked') }}>play</FlipButton>
-      <FlipButton name={info.song} />
+      <SoftBox />
     </div>
   )
 }
