@@ -13,6 +13,7 @@ const SongListItem = (props: {info: SongInfo}) => {
       <span>{info.duration}</span>
       <Button name={info.song} onClick={() => { alert('clicked') }}>play</Button>
       <FlipButton name={info.song} onClick={() => { alert('clicked') }}>play</FlipButton>
+      <FlipButton name={info.song} />
     </div>
   )
 }

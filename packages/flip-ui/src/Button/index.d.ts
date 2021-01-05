@@ -6,6 +6,6 @@ export interface ButtonProps {
   onClick?: React.MouseEventHandler<HTMLElement>;
 }
 
-export declare function Button(props: ButtonProps);
+export declare function Button(props: ButtonProps)
 
 export default Button
