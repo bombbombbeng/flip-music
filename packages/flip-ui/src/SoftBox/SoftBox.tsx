@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { createStyle } from '../styles/index'
 
 export interface SoftBoxProps {
+  children?: React.ReactNode,
   /**
    * The direction of light.
    * @default 'left-top'
@@ -51,6 +53,7 @@ export interface SoftBoxProps {
 
 export function SoftBox(props: SoftBoxProps) {
   const {
+    children,
     lightPlacement,
     color,
     width,
@@ -61,12 +64,27 @@ export function SoftBox(props: SoftBoxProps) {
     blur,
     shape
   } = props
+
+  const sheet = createStyle({
+    flipSoftBox: {
+      cursor: 'pointer',
+      background: color,
+      width,
+      height,
+      borderRadius: radius,
+      boxShadow: `${distance}px ${distance}px ${blur}px #cfb847, -${distance}px -${distance}px ${blur}px #fff85f`
+    }
+  })
+
+  sheet.attach()
+
   return (
-    <div>hahah</div>
+    <div className="flip-soft-box">{children}</div>
   )
 }
 
 SoftBox.defaultProps = {
+  children: undefined,
   lightPlacement: 'left-top',
   color: '#f3d853',
   width: 20,
@@ -79,6 +97,7 @@ SoftBox.defaultProps = {
 }
 
 SoftBox.propTypes = {
+  children: PropTypes.node,
   lightPlacement: PropTypes.string,
   color: PropTypes.string,
   width: PropTypes.number,
