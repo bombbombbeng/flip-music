@@ -3,9 +3,9 @@ import preset from 'jss-preset-default'
 
 jss.setup(preset())
 
-export function createStyle(style) {
+export function createStyle(style: any) {
   const sheet = jss.createStyleSheet(style)
-  console.log(sheet)
+  console.log('createStyle', sheet)
   return sheet
 }
 

@@ -51,6 +51,13 @@ export interface SoftBoxProps {
   shape?: 'flat' | 'concave' | 'convex' | 'pressed'
 }
 
+// const styles = createStyle({
+//   flipSoftBoxInner: {
+//     flex: '',
+//
+//   }
+// })
+
 export function SoftBox(props: SoftBoxProps) {
   const {
     children,
@@ -67,7 +74,6 @@ export function SoftBox(props: SoftBoxProps) {
 
   const sheet = createStyle({
     flipSoftBox: {
-      cursor: 'pointer',
       background: color,
       width,
       height,
@@ -76,10 +82,14 @@ export function SoftBox(props: SoftBoxProps) {
     }
   })
 
+  console.log('sheet', sheet)
+
   sheet.attach()
 
   return (
-    <div className="flip-soft-box">{children}</div>
+    <div className={sheet.classes.flipSoftBox}>
+      <div>{children}</div>
+    </div>
   )
 }
 
@@ -87,8 +97,8 @@ SoftBox.defaultProps = {
   children: undefined,
   lightPlacement: 'left-top',
   color: '#f3d853',
-  width: 20,
-  height: 20,
+  width: 60,
+  height: 40,
   radius: '20%',
   distance: 5,
   intensity: 10,

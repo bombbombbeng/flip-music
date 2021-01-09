@@ -1,4 +1,5 @@
 import React from 'react'
+import ThemeProvider from 'flip-ui/src/ThemeProvider'
 import api from '../../common/api'
 import SongListItem from './SongListItem'
 import 'src/styles/app.css'
@@ -62,9 +63,11 @@ class SearchSong extends React.Component<{}, AppState> {
       <SongListItem key={item.id} info={item} />
     ))
     return (
-      <div>
-        {listItem}
-      </div>
+      <ThemeProvider theme={{ color: '#f3d853' }}>
+        <div>
+          {listItem}
+        </div>
+      </ThemeProvider>
     )
   }
 }
