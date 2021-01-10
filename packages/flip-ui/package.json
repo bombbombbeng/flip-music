@@ -1,0 +1,28 @@
+{
+  "name": "flip-ui",
+  "version": "1.0.0",
+  "description": "flip-ui",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "ui-framework"
+  ],
+  "author": "bombbombbeng",
+  "license": "MIT",
+  "dependencies": {
+    "@types/jss": "^10.0.0",
+    "jss": "^10.5.0",
+    "jss-preset-default": "^10.5.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.56",
+    "@types/react-dom": "^16.9.9"
+  }
+}
