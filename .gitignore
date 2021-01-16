@@ -6,3 +6,4 @@
 /yarn-error.log
 /packages/flip-ui/node_modules/
 /packages/flip-music/node_modules/
+/packages/flip-music/dist/

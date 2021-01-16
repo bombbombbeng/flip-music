@@ -2,7 +2,6 @@ import React from 'react'
 // import PropTypes from 'prop-types'
 
 export interface ButtonProps {
-  name: string,
   children?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLElement>;
 }

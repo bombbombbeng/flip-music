@@ -7,8 +7,10 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider(props: ThemeProviderProps) {
-  const { theme, children } = props
-  // const theme = useTheme()
+  const { theme: localTheme, children } = props
+  const outerTheme = useTheme()
+  console.log('outerTheme', outerTheme)
+  const theme = outerTheme === null ? localTheme : { ...outerTheme, ...localTheme }
   return (
     <ThemeContext.Provider value={theme}>
       {children}

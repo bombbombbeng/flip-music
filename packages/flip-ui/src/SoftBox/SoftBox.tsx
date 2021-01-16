@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { createStyle } from '../styles/index'
+import { createStyle, useTheme } from '../styles'
 
 export interface SoftBoxProps {
   children?: React.ReactNode,
@@ -71,21 +71,18 @@ export function SoftBox(props: SoftBoxProps) {
     blur,
     shape
   } = props
-
+  const theme = useTheme()
+  console.log('soft box', theme)
   const sheet = createStyle({
     flipSoftBox: {
-      background: color,
+      background: theme && theme.color ? theme.color : color,
       width,
       height,
       borderRadius: radius,
       boxShadow: `${distance}px ${distance}px ${blur}px #cfb847, -${distance}px -${distance}px ${blur}px #fff85f`
     }
   })
-
-  console.log('sheet', sheet)
-
   sheet.attach()
-
   return (
     <div className={sheet.classes.flipSoftBox}>
       <div>{children}</div>
