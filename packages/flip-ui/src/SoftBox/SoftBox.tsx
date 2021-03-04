@@ -1,52 +1,44 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { createStyle, useTheme } from '../styles'
+import { colorLuminance } from './utils'
 
 export interface SoftBoxProps {
   children?: React.ReactNode,
   /**
    * The direction of light.
-   * @default 'left-top'
    */
   lightPlacement?: 'left-top' | 'right-top' | 'left-bottom' | 'right-bottom',
   /**
-   * The color of the component.
-   * @default '#f3d853'
+   * The color of the component, support hx and rgb()
    */
-  color?: String,
+  color?: string,
   /**
    * The width of the component, unit is 'px'.
-   * @default 20
    */
-  width?: Number,
+  width?: number,
   /**
    * The height of the component, unit is 'px'.
-   * @default 20
    */
-  height?: Number,
+  height?: number,
   /**
    * The radius of the box, support 'px' and '%', such as '20px' and '20%'.
-   * @default '20%'
    */
   radius?: String,
   /**
    * The distance of light, unit is 'px'.
-   * @default 5
    */
-  distance?: Number,
+  distance?: number,
   /**
-   * The intensity of the light.
-   * default 10
+   * The intensity of the light, range from 0 to 1.
    */
-  intensity?: Number,
+  intensity?: number,
   /**
    * The blur of shadow, unit is 'px'.
-   * default 20
    */
-  blur?: Number,
+  blur?: number,
   /**
    * The shape of the box.
-   * default 'flat'
    */
   shape?: 'flat' | 'concave' | 'convex' | 'pressed'
 }
@@ -62,24 +54,27 @@ export function SoftBox(props: SoftBoxProps) {
   const {
     children,
     lightPlacement,
-    color,
+    color: c,
     width,
     height,
     radius,
     distance,
-    intensity,
+    intensity = 0.15,
     blur,
     shape
   } = props
   const theme = useTheme()
   console.log('soft box', theme)
+  const color = theme && theme.color ? theme.color : c
+  const lightColor = colorLuminance(color, intensity)
+  const darkColor = colorLuminance(color, intensity * -1)
   const sheet = createStyle({
     flipSoftBox: {
-      background: theme && theme.color ? theme.color : color,
+      background: color,
       width,
       height,
       borderRadius: radius,
-      boxShadow: `${distance}px ${distance}px ${blur}px #cfb847, -${distance}px -${distance}px ${blur}px #fff85f`
+      boxShadow: `${distance}px ${distance}px ${blur}px ${darkColor}, -${distance}px -${distance}px ${blur}px ${lightColor}`
     }
   })
   sheet.attach()
@@ -93,12 +88,12 @@ export function SoftBox(props: SoftBoxProps) {
 SoftBox.defaultProps = {
   children: undefined,
   lightPlacement: 'left-top',
-  color: '#f3d853',
+  color: '#e0e0e0',
   width: 60,
   height: 40,
   radius: '20%',
   distance: 5,
-  intensity: 10,
+  intensity: 0.15,
   blur: 20,
   shape: 'flat'
 }
